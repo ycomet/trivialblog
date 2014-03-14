@@ -1,0 +1,54 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:spring="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+  <jsp:output omit-xml-declaration="yes" />
+
+  <jsp:directive.attribute name="maxPages" type="java.lang.Integer" required="true" rtexprvalue="true" description="The maximum number of pages available (ie tableRecordCount / size)" />
+  <jsp:directive.attribute name="page" type="java.lang.Integer" required="false" rtexprvalue="true" description="The current page (not required, defaults to 1)" />
+  <jsp:directive.attribute name="size" type="java.lang.Integer" required="false" rtexprvalue="true" description="The number of records per page (not required, defaults to 10)" />
+  <jsp:directive.attribute name="render" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicate if the contents of this tag and all enclosed tags should be rendered (default 'true')" />
+
+  <c:if test="${empty render or render}">
+
+    <c:if test="${empty page || page lt 1}">
+      <c:set var="page" value="1" />
+    </c:if>
+
+    <c:if test="${empty size || size lt 1}">
+      <c:set var="size" value="5" />
+    </c:if>
+
+<c:if test="${maxPages gt 1}">
+    <div class="pagination">
+	    <c:if test="${page gt 1}">
+		    <div class="previous">
+		      <spring:url value="${queryUrl}" var="previous" htmlEscape="false">
+		        <spring:param name="page" value="${page - 1}" />
+		        <spring:param name="size" value="${size}" />
+		      </spring:url>
+		      
+		      <spring:message code="list_newer_entries" var="previous_label" htmlEscape="false" />
+		      <a href="${previous}" class="pagination previous" title="${fn:escapeXml(previous_label)}">
+		        ${fn:escapeXml(previous_label)}
+		      </a>
+		    </div>
+	    </c:if>
+	    <c:out value=" " />
+	
+	    <c:if test="${page lt maxPages}">
+	      <div class="next">
+		      <spring:url value="${queryUrl}" var="next" htmlEscape="false">
+		        <spring:param name="page" value="${page + 1}" />
+		        <spring:param name="size" value="${size}" />
+		      </spring:url>
+		      
+		      <spring:message code="list_older_entries" var="next_label" htmlEscape="false" />
+		      <a  href="${next}" title="${fn:escapeXml(next_label)}">
+		        ${fn:escapeXml(next_label)}
+		      </a>
+	      </div>
+	    </c:if>
+	 </div>
+  </c:if>
+  
+  </c:if>
+
+</jsp:root>

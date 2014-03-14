@@ -1,0 +1,16 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:blogview="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <spring:message var="app_name" code="application_name" htmlEscape="false" />
+  <spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
+
+   <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+   <jsp:output omit-xml-declaration="yes"/>
+    <page:blogpaging id="pl_org_ylabs_trivialblog_entities_Post" items="${posts}" z="udbvh4BB8usgMA0A3uEz3yjnalQ=">
+        <blogview:blogview data="${posts}" id="l_org_ylabs_trivialblog_entities_Post" datePattern="${post_datecreated_date_format}" path="/posts" z="XQN2DkWVSm15+op+6xJO7QS7d/0=">
+            <blogview:column id="c_org_ylabs_trivialblog_entities_Post_title" property="title" z="1xUY9kyTtYbeoQfoM9bEHaUt528="/>
+            <blogview:column id="c_org_ylabs_trivialblog_entities_Post_body" property="body" z="z804AHPd1jquYXYJ8OvJVXptu2U="/>
+            <blogview:column date="true" dateTimePattern="${post_datecreated_date_format}" id="c_org_ylabs_trivialblog_entities_Post_dateCreated" property="dateCreated" z="61PKtR5HOJP2ujhhbxMouAq3Cyg="/>
+        </blogview:blogview>
+    </page:blogpaging>
+</div>

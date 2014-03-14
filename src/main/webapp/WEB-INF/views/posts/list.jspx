@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_org_ylabs_trivialblog_Post" items="${posts}" z="kVA7pAqpj+2i3w1OL3lZbcrkgHc=">
+        <table:table data="${posts}" id="l_org_ylabs_trivialblog_Post" path="/posts" z="Cks88rQlvm1yqFlKCeTDTEvLANM=">
+            <table:column id="c_org_ylabs_trivialblog_Post_title" property="title" z="ZwC5OagdLjAhimL3FdNiBNmqbHg="/>
+            <table:column id="c_org_ylabs_trivialblog_Post_body" property="body" z="w0vyZZBChKoc4jVo+NRcR96lUjE="/>
+            <table:column date="true" dateTimePattern="${post_datecreated_date_format}" id="c_org_ylabs_trivialblog_Post_dateCreated" property="dateCreated" z="MNXhNCyiXKjNIadcyk96cfP0zow="/>
+        </table:table>
+    </page:list>
+</div>
